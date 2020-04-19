@@ -5,26 +5,27 @@ logger = utils.create_logger()
 
 # # # ================================================================= # # # 
 
-# def test_login(browser): 
-    
-#     # Data 
-#     url = data['url']
-#     user_name = data['username']
-#     password = data['password']
-#     browser.get(url)
 
-#     login_page = Login(browser)
-#     logger.info("Login page started...")
-#     login_page.enter_username(user_name)
-#     login_page.enter_password(password)
-#     login_page.click_login()
-#     assert browser.title == "Guru99 Bank Manager HomePage"
-#     manager_id = (browser.find_element_by_xpath("/html/body/table/tbody/tr/td/table/tbody/tr[3]/td").text)
-#     assert "Manger Id : mngr254844" == manager_id, "failed "
-#     logger.info("Login, Taking screenshot...")
-#     login_page.take_screenshot()
-#     logger.info("Login test complited")
-#     # browser.back()
+def test_login(browser): 
+    
+    # Data 
+    url = data['url']
+    user_name = data['username']
+    password = data['password']
+    browser.get(url)
+
+    login_page = Login(browser)
+    logger.info("Login page started...")
+    login_page.enter_username(user_name)
+    login_page.enter_password(password)
+    login_page.click_login()
+    assert browser.title == "Guru99 Bank Manager HomePage"
+    manager_id = (browser.find_element_by_xpath("/html/body/table/tbody/tr/td/table/tbody/tr[3]/td").text)
+    assert "Manger Id : mngr254844" == manager_id, "failed "
+    logger.info("Login, Taking screenshot...")
+    login_page.take_screenshot()
+    logger.info("Login test complited")
+    # browser.back()
 
 # # # ================================================================= # # # 
 
@@ -265,18 +266,22 @@ def test_mini_statement(browser):
     print(txt)
     assert "Mini Statement Form" == txt
 
+    acc = data['accounts']
+    for i in acc: 
+        print(">>>", i)
+
     mini_statement = Mini_Statement(browser)
+    for i in acc: 
+        mini_statement.enter_account_no(i)
+        mini_statement.click_submit_btn()
 
-    mini_statement.enter_account_no("123")
-    sleep(2)
-    mini_statement.click_submit_btn()
+        if mini_statement.is_alert_present(): 
+            mini_statement.take_care_alert()
 
-    if mini_statement.is_alert_present(): 
-        mini_statement.take_care_alert()
-
-    txt = (browser.find_element_by_xpath("/html/body/table/tbody/tr[1]/td/p").text).strip()
-    print(txt)
-    assert "Last Five Transaction Details for Account No: 77292" == txt
+        txt = (browser.find_element_by_xpath("/html/body/table/tbody/tr[1]/td/p").text).strip()
+        print("txt >>", txt)
+        assert ("Last Five Transaction Details for Account No: "+str(i)) == txt
+        browser.back()
 
 # # # ================================================================= # # # 
 
