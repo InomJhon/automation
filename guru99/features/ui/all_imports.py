@@ -14,5 +14,12 @@ from features.ui.pages.new_customer import *
 from features.ui.pages.edit_customer import *
 from features.ui.pages.new_account_registration import *
 from features.ui.pages.edit_account import *
+from features.ui.pages.deposit_page import *
+from features.ui.pages.withdrawal_page import *
+from features.ui.pages.fund_transfer_page import * 
+from features.ui.pages.change_password import *
+from features.ui.pages.balance_enquiry import *
+from features.ui.pages.mini_statement import *
+
 import openpyxl
 import XLUtils 
