@@ -1,0 +1,15 @@
+url: http://demo.guru99.com/insurance/v1/register.php
+title: Doctor 
+first_name: Inom
+last_name: Nematov
+phone_number: 6665554433
+year_of_birth: 1986
+month_of_birth: March
+day_of_birth: "22"
+address: 1947 Ocean ave 
+city: New York 
+country: USA
+zip: 111223
+email: a@gmail.com
+password: 111
+
