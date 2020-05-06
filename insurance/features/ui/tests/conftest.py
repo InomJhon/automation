@@ -14,3 +14,4 @@ def browser():
     # TEARDOWN (after your scope)
     # step: 6 - closing the browser
     driver.quit()
+
