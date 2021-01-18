@@ -1,7 +1,7 @@
 from features.ui.all_imports import *
 
 #UPDATE
-#update 3
+#update 3.1
 class BasePage():
 
     def __init__(self, driver):
